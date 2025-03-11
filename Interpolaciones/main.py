@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import sympy as sp
-from taylor import InterpolacionTaylor
+from taylor import InterpolacionTaylor      # Importación de las clases para las interpolaciones
 from lagrange import InterpolacionLagrange
 from hermite import InterpolacionHermite
 from atrozos import InterpolacionATrozos

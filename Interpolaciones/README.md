@@ -40,4 +40,6 @@ En la ciudad de Estocolmo se realizaron investigaciones meteorológicas, con el 
 </b>
 Se determinó que la temperatura presenta un comportamiento similar a la expresión matemática:  <b>y = x^4 - 5x^3 - 2</b>. De esta manera, se asume que los valores de las funciones derivadas para las abscisas <b>-2, 0 y 2 son -92, 0 y -28</b>, respectivamente.  Conociendo estos datos, el equipo de investigadores desea realizar una interpolación, con la finalidad de comparar los resultados. En este sentido, utilizarán cuatro métodos: Taylor, Lagrange, Hermite, y Polinómica a Trozos (Interpolador por splines). Además, para la interpolación de Taylor, se desea aproximar al punto x = 1, con un máximo de 3 derivadas.
 
-#### Nota: En la graficación, el eje X representa el tiempo del estudio. El cero representa el punto medio del mismo, es decir, la hora 12 del análisis meteorológico.
+
+> [!NOTE]
+> En la graficación, el eje X representa el tiempo del estudio. El cero representa el punto medio del mismo, es decir, la hora 12 del análisis meteorológico.

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 class NumeroCondicion:
     def __init__(self, A):
-        self.A = A
+        self.A = A          # matriz 
         self.condA = self.calcular_condA()
 
     def calcular_condA(self):
@@ -18,7 +18,7 @@ class NumeroCondicion:
     
     def determinante(self, matriz):
         if len(matriz) == 2:
-            return ((matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]))
+            return ((matriz[0][0] * matriz[1][1]) - (matriz[0][1] * matriz[1][0]))  # calcula la determinante de una matriz cuadrada (condición de parada para función recursiva)
         determinante = 0
         for c in range(len(matriz)):
             # Crear una submatriz. Expansión por cofactores a partir de la fila 1.
@@ -29,26 +29,26 @@ class NumeroCondicion:
 
     def inversa(self, matriz):
         n = len(matriz)
-        A = self.copiar_matriz(matriz)
-        identidad = [[1 if i == j else 0 for j in range(n)] for i in range(n)]
+        A = self.copiar_matriz(matriz)  # copia la matriz para que no haya problemas luego
+        identidad = [[1 if i == j else 0 for j in range(n)] for i in range(n)]  # crea una matriz identidad del tamaño de la matriz original
         for i in range(n):
-            A[i] += identidad[i]
+            A[i] += identidad[i]    # adjunta la matriz identidad a la matriz original para calcular su inversa
         for i in range(n):
-            if abs(A[i][i]) < 1e-12:
+            if abs(A[i][i]) < 1e-12:    # verificación para evitar valores muy pequeños en el pivote
                 for j in range(i + 1, n):
                     if abs(A[j][i]) > abs(A[i][i]):
                         A[i], A[j] = A[j], A[i]
                         break
-            pivote = A[i][i]
+            pivote = A[i][i]        # eliminación gaussiana
             A[i] = [x / pivote for x in A[i]]
             for j in range(n):
                 if j != i:
                     factor = A[j][i]
                     A[j] = [a - factor * b for a, b in zip(A[j], A[i])]
-        return [fila[n:] for fila in A]
+        return [fila[n:] for fila in A] # retorna la matriz inversa (como duplico el tamaño de la matriz original, el tamaño inicial (n) es ahora la mitad de la matriz resultante)
     
     def copiar_matriz(self, matriz):
-        return [fila[:] for fila in matriz]
+        return [fila[:] for fila in matriz] # hace una copia por trozos de la matriz
     
     def norma(self, matriz):
         return math.sqrt(sum(x**2 for fila in matriz for x in fila))

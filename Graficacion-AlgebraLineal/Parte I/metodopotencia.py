@@ -3,24 +3,24 @@ import matplotlib.pyplot as plt
 
 class MetodoPotencia:
     def __init__(self, A, x0, tolerancia):
-        self.A = A
-        self.x0 = x0
-        self.tolerancia = tolerancia
-        self.autovalores, self.autovectores = self.metodo_potencia()
+        self.A = A      # matriz
+        self.x0 = x0    # vector
+        self.tolerancia = tolerancia    # tolerancia máxima
+        self.autovalores, self.autovectores = self.metodo_potencia()   # guarda el autovalor y el autovector
 
     def metodo_potencia(self, error = 1):
-        if (len(self.A) == len(self.x0)):
-            autovalores = []
-            autovectores = []
+        if (len(self.A) == len(self.x0)):   # verifica que la matriz cuadrada tenga la misma cantidad de columnas, que filas el vector
+            autovalores = []    # lista para guardas los autovalores
+            autovectores = []   # lista para guardas los autovectores
             vector = self.x0
-            while error > self.tolerancia:
-                Ax = self.producto(self.A, vector) 
-                norma = self.norma(Ax)
-                autovalores.append(norma)
-                vector = [x / norma for x in Ax]
+            while error > self.tolerancia:  # mientras el error sea mayor a la tolerancia máxima, se repetirá el ciclo
+                Ax = self.producto(self.A, vector)  # calcula el producto entre la matriz y el vector
+                norma = self.norma(Ax)  # calcula la norma del autovector recien calculado
+                autovalores.append(norma)   # añade la norma a la lista de autovalores
+                vector = [x / norma for x in Ax]   # Normaliza el autovector, para seguidamente guardarlo
                 autovectores.append(vector)
-                if (len(autovalores) > 1):
-                    error = abs(autovalores[-1] - autovalores[-2])
+                if (len(autovalores) > 1):  
+                    error = abs(autovalores[-1] - autovalores[-2])  # calcula el nuevo error (último elemento de la lista, menos el penúltimo)
             return autovalores, autovectores
         else:
             print("Error de dimensiones")
